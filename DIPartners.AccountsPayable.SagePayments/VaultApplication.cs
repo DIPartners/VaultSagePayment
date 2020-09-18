@@ -151,7 +151,7 @@ namespace DIPartners.AccountsPayable.SagePayments
                 searchBuilder.Conditions.AddPropertyCondition(
                                                 CriteriaData.PropertyID.ID, 
                                                 CriteriaData.ConditionType,
-                                                Vault.PropertyDefOperations.GetPropertyDef(CriteriaData.PropertyID.ID).DataType, 
+                                                PropertyType, 
                                                 CriteriaData.TypedValue);
             }
 
