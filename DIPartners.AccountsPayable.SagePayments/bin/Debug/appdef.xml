@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application
+			type="server-application"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:noNamespaceSchemaLocation="http://www.m-files.com/schemas/appdef-server-v1.xsd">
+  <guid>a098cec6-a641-4836-8453-c5c883dba6fc</guid>
+  <name>DIPartners.AccountsPayable.SagePayments</name>
+  <description>Sage 50 Payments Integration</description>
+  <publisher>Document Imaging Partners</publisher>
+  <version>0.1</version>
+  <copyright></copyright>
+  <required-mfiles-version>19.9.8227.13</required-mfiles-version>
+  <extension-objects>
+    <extension-object>
+      <name>DIPartners.AccountsPayable.SagePayments</name>
+      <assembly>DIPartners.AccountsPayable.SagePayments.dll</assembly>
+      <class>DIPartners.AccountsPayable.SagePayments.VaultApplication</class>
+      <installation-method>Install</installation-method>
+      <uninstallation-method>Uninstall</uninstallation-method>
+      <initialization-method>Initialize</initialization-method>
+      <uninitialization-method>Uninitialize</uninitialization-method>
+      <start-operations-method>StartOperations</start-operations-method>
+    </extension-object>
+  </extension-objects>
+</application>
