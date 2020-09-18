@@ -68,7 +68,7 @@ namespace DIPartners.AccountsPayable.SagePayments
             InvoiceValues.Add(new InvoiceValue() { PropertyID = InvoiceNumber_PD, TypedValue = SearchPropertyValue(oCurrObjVals, InvoiceNumber_PD) });
             InvoiceValues.Add(new InvoiceValue() { PropertyID = Vendor_PD, TypedValue = VendorID });
             List<ObjVerEx> InvoiceObjVers = SearchForObjects(env, Invoice_CD, InvoiceValues);
-
+             
             if (InvoiceObjVers != null)
             {
                 InvoiceValues = new List<InvoiceValue>();
@@ -151,7 +151,7 @@ namespace DIPartners.AccountsPayable.SagePayments
                 searchBuilder.Conditions.AddPropertyCondition(
                                                 CriteriaData.PropertyID.ID, 
                                                 CriteriaData.ConditionType,
-                                                PropertyType, 
+                                                Vault.PropertyDefOperations.GetPropertyDef(CriteriaData.PropertyID.ID).DataType, 
                                                 CriteriaData.TypedValue);
             }
 
@@ -182,7 +182,24 @@ namespace DIPartners.AccountsPayable.SagePayments
                         ppt.TypedValue.GetLookupID().ToString() : ppt.TypedValue.DisplayValue;
         }
 
-            #region SampleCode
+        #region SampleCode
+
+
+        public PropertyValue test(PropertyValues ppvs, MFIdentifier PropertyDef, MFIdentifier SetDef = null)
+        {
+
+            var ppValue = new PropertyValue();
+            ppValue.PropertyDef = PropertyDef;
+
+            if (SetDef == null) SetDef = PropertyDef;
+            var ppt = ppvs.SearchForProperty(SetDef);
+            ppValue.Value.SetValue(ppt.TypedValue.DataType, SearchPropertyValue(ppvs, SetDef, ppt));
+
+            return ppValue;
+        }
+
+
+
         public ObjectSearchResults SearchObjects_Old(StateEnvironment env, string ClassAlias, List<InvoiceValue> Criteria)
         {
             ObjectSearchResults searchResults;
