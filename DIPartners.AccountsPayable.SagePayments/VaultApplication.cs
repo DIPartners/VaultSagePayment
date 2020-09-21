@@ -29,7 +29,7 @@ namespace DIPartners.AccountsPayable.SagePayments
     public class VaultApplication
         : ConfigurableVaultApplicationBase<Configuration>
     {
-        #region MFIdentifier
+        #region Set MFIdentifier
         [MFClass]
         public MFIdentifier Invoice_CD = "vClass.Invoice";
         [MFClass]
@@ -57,7 +57,7 @@ namespace DIPartners.AccountsPayable.SagePayments
         #endregion
 
         [StateAction("vWorkFlowState.SagePayments.NewPayment")]
-        public void CreateCheque(StateEnvironment env)
+        public void CreateChequeTest(StateEnvironment env)
         {
             var Vault = env.ObjVerEx.Vault;
             var oCurrObjVals = Vault.ObjectPropertyOperations.GetProperties(env.ObjVerEx.ObjVer);
@@ -104,12 +104,16 @@ namespace DIPartners.AccountsPayable.SagePayments
                 }
 
                 var ChequeProps = Vault.ObjectPropertyOperations.GetProperties(oCheque);
+                var ChequeValue = ChequeProps.SearchForProperty(PaidInvoices_PD).TypedValue;
                 var PaidInvoices = ChequeProps.SearchForProperty(PaidInvoices_PD).TypedValue.GetValueAsLookups();
                 bool FoundInvoice = false;
+                   
+                object[,] ChequeValueItems = (object[,])(Array)ChequeValue.Value;
 
-                foreach (var PaidInvoice in PaidInvoices)
+
+                foreach (object ChequeValueItem in ChequeValueItems)
                 {
-                    if(PaidInvoice.ToString() == InvoiceObjVers[0].ObjVer.ID.ToString())
+                    if (ChequeValueItem.ToString() == InvoiceObjVers[0].ObjVer.ID.ToString())
                     {
                         FoundInvoice = true;
                         break;
