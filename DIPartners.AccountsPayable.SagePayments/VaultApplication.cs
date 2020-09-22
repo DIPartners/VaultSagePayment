@@ -105,7 +105,7 @@ namespace DIPartners.AccountsPayable.SagePayments
 
                 var ChequeProps = Vault.ObjectPropertyOperations.GetProperties(oCheque);
                 var PaidInvoices = ChequeProps.SearchForProperty(PaidInvoices_PD).TypedValue.GetValueAsLookups();
-                object[,] PaidInvoicesItems = (object[,])(Array)ChequeProps.SearchForProperty(PaidInvoices_PD).TypedValue.Value;
+                object[,] PaidInvoicesItems = (object[,])ChequeProps.SearchForProperty(PaidInvoices_PD).TypedValue.Value;
                 bool FoundInvoice = false;
 
                 foreach (object PaidInvoicesItem in PaidInvoicesItems)
