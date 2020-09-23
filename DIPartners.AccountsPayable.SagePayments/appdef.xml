@@ -7,7 +7,7 @@
   <name>DIPartners.AccountsPayable.SagePayments</name>
   <description>Sage 50 Payments Integration</description>
   <publisher>Document Imaging Partners</publisher>
-  <version>0.1</version>
+  <version>1.1</version>
   <copyright></copyright>
   <required-mfiles-version>19.9.8227.13</required-mfiles-version>
   <extension-objects>

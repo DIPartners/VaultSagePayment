@@ -35,8 +35,8 @@ C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePaymen
 C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePayments\bin\Debug\Newtonsoft.Json.xml
 C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePayments\bin\Debug\fi-FI\MFiles.VAF.resources.dll
 C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePayments\bin\Debug\fi-FI\MFiles.VAF.Configuration.resources.dll
-C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePayments\obj\Debug\DIPartners.AccountsPayable.SagePayments.csprojAssemblyReference.cache
 C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePayments\obj\Debug\DIPartners.AccountsPayable.SagePayments.csproj.CoreCompileInputs.cache
 C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePayments\obj\Debug\DIPartners.AccountsPayable.SagePayments.csproj.CopyComplete
 C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePayments\obj\Debug\DIPartners.AccountsPayable.SagePayments.dll
 C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePayments\obj\Debug\DIPartners.AccountsPayable.SagePayments.pdb
+C:\Users\hko\source\repos\VaultSagePayment\DIPartners.AccountsPayable.SagePayments\obj\Debug\DIPartners.AccountsPayable.SagePayments.csprojAssemblyReference.cache

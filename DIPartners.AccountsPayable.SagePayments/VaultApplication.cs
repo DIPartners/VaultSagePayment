@@ -54,6 +54,10 @@ namespace DIPartners.AccountsPayable.SagePayments
         public MFIdentifier PaidInvoices_PD = "vProperty.PaidInvoices";
         [MFObjType]
         public MFIdentifier Cheque_OT = "vObject.Cheque";
+        [MFWorkflow]
+        public MFIdentifier SagePaymentWorkFlow = "vWorkflow.SagePayments";
+        [MFState]
+        public MFIdentifier Processed_State = "vWorkFlowState.SagePayments.Processed";
         #endregion
 
         [StateAction("vWorkFlowState.SagePayments.NewPayment")]
@@ -104,13 +108,12 @@ namespace DIPartners.AccountsPayable.SagePayments
                 }
 
                 var ChequeProps = Vault.ObjectPropertyOperations.GetProperties(oCheque);
-                var PaidInvoices = ChequeProps.SearchForProperty(PaidInvoices_PD).TypedValue.GetValueAsLookups();
-                object[,] PaidInvoicesItems = (object[,])ChequeProps.SearchForProperty(PaidInvoices_PD).TypedValue.Value;
+                Lookups PaidInvoices = ChequeProps.SearchForProperty(PaidInvoices_PD).TypedValue.GetValueAsLookups();
                 bool FoundInvoice = false;
 
-                foreach (object PaidInvoicesItem in PaidInvoicesItems)
+                foreach (Lookup PaidInvoicesItem in PaidInvoices)
                 {
-                    if (PaidInvoicesItem.ToString() == InvoiceObjVers[0].ObjVer.ID.ToString())
+                    if (PaidInvoicesItem.Item == InvoiceObjVers[0].ObjVer.ID)
                     {
                         FoundInvoice = true;
                         break;
@@ -134,6 +137,8 @@ namespace DIPartners.AccountsPayable.SagePayments
                 }
                 env.ObjVerEx.Vault.ObjectOperations.CheckIn(oCheque);
             }
+            env.ObjVerEx.SetWorkflowState(SagePaymentWorkFlow, Processed_State);
+            env.ObjVerEx.SaveProperties();
         }
 
         public List<ObjVerEx> SearchForObjects(StateEnvironment env, MFIdentifier ClassAlias,List <InvoiceValue> Criteria)
